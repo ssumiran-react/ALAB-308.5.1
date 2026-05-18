@@ -96,10 +96,12 @@ const jobAgeAddOne = jobs.map(item => {
     return newJob;
 });
 
-const sum = jobs.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-
-    // Calculate average
-    const average = sum / jobs.length;
+const sum = jobs.reduce((acc, obj) => {
+    const value = Number(obj.age);
+    return acc + (isNaN(value) ? 0 : value);
+}, 0);
+console.log("Sum:", sum); 
+console.log("Average:", sum/jobs.length);
 
 console.log("Age sorted :",sortingAge);
 console.log("Age under 51 :",ageUnder51);
